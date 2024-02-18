@@ -5,14 +5,18 @@
 require_once __DIR__ . '/../core/Model.php';
 require_once __DIR__ . "/../models/Student.php";
 require_once __DIR__ . "/../models/Employee.php";
+require_once __DIR__ . "/../models/Housing.php";
 
 
 echo "Running Project";
 $runModel = new Model();
 
 $testStud = new Student();
-$testStud->addStudent("Sami", "sami@stud.nl", "Peper 1");
+$testStud->addStudent("Senn", "senn@stud.nl", "Peper 5");
 
 $testEmplo = new Employee();
-$testEmplo->addEmployee("Ben", "ben1@ams.nl", "adminitration");
+$testEmplo->addEmployee("Youssef", "youssef@ams.nl", "adminitration");
 echo "Ending Project";
+
+$testHousing = new Housing();
+$testHousing->addHousing("Peper 2", "Amsterdam", "Studio", 1, 650.99, 05 - 10 - 2024);
