@@ -1,10 +1,33 @@
 <?php
+require_once __DIR__ . "/../core/Model.php";
 
-include_once "core/Model.php";
 
 class Employee extends Model {
-   public function addEmployee($data) {
-        // Implementation of adding an employee
+
+    public function __construct() {
+        parent::__construct(); //Calling the parent constructor to execute (Override)
+    }
+
+    public function addEmployee($name, $email, $position) {
+        echo "add employee $name, $email, $position";
+        try {
+            $query = "INSERT INTO employees (name, email, position) VALUES (:name, :email, :position)";
+        
+            $stmt = $this->db->prepare($query);
+            
+            // Bind values
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':position', $position);
+            
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (\Throwable $th) {
+            echo "Error: " . $th->getMessage();
+        }
     }
 
     public function updateEmployee($id, $data) {

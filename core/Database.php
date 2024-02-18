@@ -1,5 +1,5 @@
 <?php
-
+require_once __DIR__ . "/../config/config.php";
 class Database {
     private $host = DB_HOST; // Defined in config.php
     private $db_name = DB_NAME; // Defined in config.php
