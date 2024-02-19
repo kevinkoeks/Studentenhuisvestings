@@ -32,3 +32,29 @@ echo "Ending Project";
 
 $testHousing = new Housing();
 $testHousing->addHousing("Peper 2", "Amsterdam", "Studio", 1, 650.99, 05 - 10 - 2024);
+
+//
+// //Here's a simplified example of how index.php might decide to load home.php:
+//
+// // Inside public/index.php
+// require_once '../config/config.php'; // Load configuration
+// require_once '../core/Database.php'; // Setup database connection
+// // Other bootstrap tasks...
+
+// // Basic routing (for illustration only)
+// $page = $_GET['page'] ?? 'home'; // Default to 'home' if no page specified
+
+// switch ($page) {
+//     case 'home':
+//         require_once '../views/home.php';
+//         break;
+//     case 'students':
+//         // Assume StudentsController handles student-related actions
+//         require_once '../controllers/StudentsController.php';
+//         $controller = new StudentsController();
+//         $controller->index(); // Method to handle listing students or showing a student form
+//         break;
+//     // Add more cases for other pages
+//     default:
+//         require_once '../views/404.php'; // Show a 404 error page if no matching route
+// }
