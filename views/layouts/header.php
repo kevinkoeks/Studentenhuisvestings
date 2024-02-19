@@ -29,7 +29,7 @@
 
 <div class="navbar">
     <a href="../views/student/addStudent.php">Add Student</a>
-    <a href="../views/student/listStudent.php">List Student</a>
+    <a href="../public/student">List Student</a> <!-- Works thanks to the .htaccess file -->
     <a href="login.php">Login</a>
 </div>
 

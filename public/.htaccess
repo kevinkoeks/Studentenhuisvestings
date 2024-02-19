@@ -1,0 +1,10 @@
+# This is needed such that I can route all the paths to index.php to handle the paths that are different 
+
+RewriteEngine On
+# Optionally set the RewriteBase if your project is in a subdirectory
+# RewriteBase /path/to/subdirectory/
+
+# Redirect all requests not pointing to an actual file or directory to index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L,QSA]

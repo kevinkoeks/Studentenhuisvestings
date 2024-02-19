@@ -7,5 +7,11 @@
 </head>
 <body>
     <p>List  Students</p>
+    <?php foreach ($students as $student): ?>
+    <p>
+        <?php echo htmlspecialchars($student['name']); ?>
+    </p>
+    <!-- More student info here -->
+    <?php endforeach; ?>
 </body>
 </html>

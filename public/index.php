@@ -1,60 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studenthuisvesting Dashboard</title>
-</head>
-<body>
-    
-</body>
-</html>
-
 <?php
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
+// Assuming this is the entry point in the public directory
 
+// Display errors for debugging - you might want to remove or modify this in production
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . "/../config/config.php";
+require_once __DIR__ . "/../core/Database.php";
 require_once __DIR__ . '/../core/Model.php';
 require_once __DIR__ . "/../models/Student.php";
 require_once __DIR__ . "/../models/Employee.php";
 require_once __DIR__ . "/../models/Housing.php";
+require_once __DIR__ . "/../core/Controller.php";
 
 
-echo "Running Project";
-$runModel = new Model();
 
-$testStud = new Student();
-$testStud->addStudent("Senn", "senn@stud.nl", "Peper 5");
+// Define the base path of the application
+$basePath = 'ExamenKlas-Training/Studentenhuisvestings/public';
 
-$testEmplo = new Employee();
-$testEmplo->addEmployee("Youssef", "youssef@ams.nl", "adminitration");
-echo "Ending Project";
+// Get the full request URI and remove the base path to isolate the route
+$requestUri = $_SERVER['REQUEST_URI'];
+$routePath = str_replace('/' . $basePath, '', $requestUri);
+$routePath = trim($routePath, '/');
 
-$testHousing = new Housing();
-$testHousing->addHousing("Peper 2", "Amsterdam", "Studio", 1, 650.99, 05 - 10 - 2024);
+// Now, explode the remaining part of the URI to get the route
+$routeParts = explode('/', $routePath);
+$route = $routeParts[0] ?: 'home'; // Default to 'home' if the route is empty
 
-//
-// //Here's a simplified example of how index.php might decide to load home.php:
-//
-// // Inside public/index.php
-// require_once '../config/config.php'; // Load configuration
-// require_once '../core/Database.php'; // Setup database connection
-// // Other bootstrap tasks...
+switch ($route) {
+    case '':
+    case 'home':
+        // Make sure the path to home.php is correct
+        require_once __DIR__ . '/../views/home.php';
+        break;
+    case 'student':
+        echo "inside student";
+        // Make sure you have a StudentsController and it is named correctly
+        require_once __DIR__ . '/../controllers/StudentController.php';
+        $controller = new StudentController();
+        $controller->index();
+        break;
+    default:
+        // Make sure the path to 404.php is correct
+        echo "Uri: " . $requestUri . "<br>";
+        echo "Error?: " . $route;
+        break;
+}
 
-// // Basic routing (for illustration only)
-// $page = $_GET['page'] ?? 'home'; // Default to 'home' if no page specified
-
-// switch ($page) {
-//     case 'home':
-//         require_once '../views/home.php';
-//         break;
-//     case 'students':
-//         // Assume StudentsController handles student-related actions
-//         require_once '../controllers/StudentsController.php';
-//         $controller = new StudentsController();
-//         $controller->index(); // Method to handle listing students or showing a student form
-//         break;
-//     // Add more cases for other pages
-//     default:
-//         require_once '../views/404.php'; // Show a 404 error page if no matching route
-// }
+// Further PHP code, if needed, should go here

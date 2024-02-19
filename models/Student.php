@@ -5,7 +5,7 @@ require_once __DIR__ . "/../core/Model.php";
 
 class Student extends Model {
      public function __construct() {
-        parent::__construct(); //Calling the parent constructor to execute (Override)
+        parent::__construct(); //Calling the parent constructor to execute, will force call the parent constructor
     }
     public function addStudent($name, $email, $address) {
     // Implementation of adding a student
@@ -28,6 +28,24 @@ class Student extends Model {
             echo "Error: " . $th->getMessage();
         }
     } 
+
+    public function getAllStudents() {
+        try {
+            $query = "SELECT id, name, email, address FROM students";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            // $dataFromDB = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            $students = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $students[] = $row;
+            }
+
+            return $students;
+        } catch (\Throwable $th) {
+            echo "Error: " . $th->getMessage();
+        }
+    }
 
     public function updateStudent($id, $data) {
         // Implementation of updating student's data
