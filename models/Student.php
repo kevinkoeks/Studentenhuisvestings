@@ -7,6 +7,7 @@ class Student extends Model {
      public function __construct() {
         parent::__construct(); //Calling the parent constructor to execute, will force call the parent constructor
     }
+
     public function addStudent($name, $email, $address) {
     // Implementation of adding a student
         try {
@@ -20,7 +21,12 @@ class Student extends Model {
             $stmt->bindParam(":address", $address);
 
             if($stmt->execute()) {
-                return true;
+                $student = [ "name" => $name, 
+                             "email" => $email, 
+                             "address" => $address
+                            ];
+                return $student;
+                // return true;
             }
 
             return false;
@@ -34,7 +40,6 @@ class Student extends Model {
             $query = "SELECT id, name, email, address FROM students";
             $stmt = $this->db->prepare($query);
             $stmt->execute();
-            // $dataFromDB = $stmt->fetch(PDO::FETCH_ASSOC);
 
             $students = [];
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {

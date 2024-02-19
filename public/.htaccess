@@ -2,7 +2,7 @@
 
 RewriteEngine On
 # Optionally set the RewriteBase if your project is in a subdirectory
-# RewriteBase /path/to/subdirectory/
+RewriteBase /ExamenKlas-Training/Studentenhuisvestings/public/
 
 # Redirect all requests not pointing to an actual file or directory to index.php
 RewriteCond %{REQUEST_FILENAME} !-f

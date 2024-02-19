@@ -5,6 +5,9 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+// Then proceed with your routing logic...
+
+
 require_once __DIR__ . "/../config/config.php";
 require_once __DIR__ . "/../core/Database.php";
 require_once __DIR__ . '/../core/Model.php';
@@ -40,6 +43,13 @@ switch ($route) {
         $controller = new StudentController();
         $controller->index();
         break;
+    case 'addStudent':
+        echo "adding student";
+        // Make sure you have a StudentsController and it is named correctly
+        require_once __DIR__ . '/../controllers/StudentController.php';
+        $controller = new StudentController();
+        $controller->add();
+        break;    
     default:
         // Make sure the path to 404.php is correct
         echo "Uri: " . $requestUri . "<br>";
