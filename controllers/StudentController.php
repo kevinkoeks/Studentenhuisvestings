@@ -10,6 +10,7 @@ class StudentController extends Controller {
         $this->loadView('listStudents', ['students' => $students]);
     }
 
+    //Adding student to database and returning a success report!
     public function add() {
         $studentModel = $this->loadModel("Student");
         $student = $studentModel->addStudent($_POST["name"], $_POST["email"], $_POST["address"]);

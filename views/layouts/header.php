@@ -29,7 +29,9 @@
 
 <div class="navbar">
     <a href="../views/student/addStudent.php">Add Student</a>
-    <a href="../public/student">List Student</a> <!-- Works thanks to the .htaccess file. Sends it to index.php for routing -->
+    <a href="../public/student">List Students</a> <!-- Works thanks to the .htaccess file. Sends it to index.php for routing -->
+    <a href="../views/housing/addHousing.php">Add House</a>
+    <a href="../public/listAllHousing">List Houses</a>
     <a href="login.php">Login</a>
 </div>
 

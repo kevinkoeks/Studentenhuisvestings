@@ -1,11 +1,12 @@
-<!-- views/student/addStudent.php -->
+<?php require_once "../../config/config.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="http://localhost/ExamenKlas-Training/Studentenhuisvestings/public/"> <!-- Make sure the info is sent to index.php-->
+    <base href="<?php echo BASE_URL ?>"> <!-- Saved the URL in a Global CONSTANT: BASE_URL. Make sure the info is sent to index.php-->
+    
     <title>Document</title>
 </head>
 <body>

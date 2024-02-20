@@ -17,10 +17,10 @@ class Controller {
 
     //Method to load a view and pass data to it
     public function loadView($typeView, $data = []) {
-        if (file_exists(__DIR__ . '/../views/student/' . $typeView . '.php')) {
-                // Extracts vars to current view scope. The extracted data will be availabel for the viewType to show
+        if (file_exists(__DIR__ . '/../views/' . $typeView . '.php')) {
+                // Changes the array. The extracted data will be availabel for the viewType to show
                 extract($data);
-                require_once __DIR__ . '/../views/student/' . $typeView . '.php';
+                require_once __DIR__ . '/../views/' . $typeView . '.php';
             } else {
                 die("View: $typeView does not exist.");
             }

@@ -39,14 +39,33 @@ class Housing extends Model {
             $stmt->bindParam(':rooms', $rooms);
             $stmt->bindParam(':price', $price);
             $stmt->bindParam(':available_from', $available_from);
-            
+
             if ($stmt->execute()) {
-                return true;
+                $housingAdded = ["address" => $address, "city" => $city, "type" => $type, 
+                                "rooms" => $rooms, "price" => $price, "available_from" => $available_from];
+                return $housingAdded;
             } else {
                 return false;
             }
         } catch (\Throwable $th) {
             echo "Error: " . $th->getMessage;
+        }
+    }
+
+    public function getAllHousings() {
+        try {
+            $query = "SELECT id, address, city, type, rooms, price, available_from FROM housings";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+
+            $housings = [];
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $housings[] = $row;
+            }
+
+            return $housings;
+        } catch (\Throwable $th) {
+            echo "Error: " . $th->getMessage();
         }
     }
 

@@ -50,6 +50,18 @@ switch ($route) {
         $controller = new StudentController();
         $controller->add();
         break;    
+    case 'listAllHousing':
+        echo "list All Housing";
+        require_once __DIR__ . '/../controllers/HousingController.php';
+        $controller = new HousingController();
+        $controller->index();
+        break;    
+    case 'addHousing':
+        echo "adding Housing";
+        require_once __DIR__ . '/../controllers/HousingController.php';
+        $controller = new HousingController();
+        $controller->add();
+        break;    
     default:
         // Make sure the path to 404.php is correct
         echo "Uri: " . $requestUri . "<br>";
