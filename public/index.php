@@ -61,7 +61,19 @@ switch ($route) {
         require_once __DIR__ . '/../controllers/HousingController.php';
         $controller = new HousingController();
         $controller->add();
-        break;    
+        break;  
+    case 'updateEmployee':
+        echo "update employee";
+        require_once __DIR__ . '/../controllers/EmployeeController.php';
+        $controller = new EmployeeController();
+        if (!isset($_POST['id'])) {
+            $controller->index(1);
+        } else {
+            $id = $_POST["id"];
+            $employeeData = ["name" => $_POST["name"], "email" => $_POST["email"], "position" => $_POST["position"]];
+            $controller->update($id, $employeeData);
+        }
+        break;   
     default:
         // Make sure the path to 404.php is correct
         echo "Uri: " . $requestUri . "<br>";
