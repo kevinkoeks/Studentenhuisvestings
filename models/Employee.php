@@ -30,15 +30,57 @@ class Employee extends Model {
         }
     }
 
-    public function updateEmployee($id, $data) {
-        // Implementation of updating an employee's details
+    public function getEmployee(int $id) {
+        try {
+            $query = "SELECT * FROM employees WHERE id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            $employee = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $employee;
+        } catch (\Throwable $th) {
+            // Handle any errors, for example, log them or display a user-friendly message
+            echo "Error retrieving employee: " . $th->getMessage();
+        }
     }
+
+
+    public function updateEmployee($id, $data) {
+    try {
+
+        // Construct the SQL statement with placeholders
+        $query = "UPDATE employees SET name = :name, email = :email, position = :position WHERE id = :id";
+        
+        // Prepare the statement
+        $stmt = $this->db->prepare($query);
+        
+        // Bind values to placeholders
+        $stmt->bindValue(':name', $data['name']);
+        $stmt->bindValue(':email', $data['email']);
+        $stmt->bindValue(':position', $data['position']);
+        $stmt->bindValue(':id', $id);
+        
+        // Execute the statement
+        $stmt->execute();
+        
+        // Check if the update was successful
+        if ($stmt->rowCount() > 0) {
+            return $data;
+        } else {
+            // No rows affected, indicating the ID might not exist or data hasn't changed
+            return false;
+        }
+    } catch (\PDOException $e) {
+        // Handle exception
+        echo "Error updating employee: " . $e->getMessage();
+        return false;
+    }
+}
 
     public function deleteEmployee($id) {
         // Implementation of deleting an employee
     }
 
-    public function getEmployee($id) {
-        // Implementation of retrieving an employee's details
-    }
 }

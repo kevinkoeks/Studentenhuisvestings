@@ -47,6 +47,23 @@
                     </tr>
                 </tbody>
             </table>
+            <?php elseif (isset($employee["name"])): ?>
+            <!-- Employee's data display logic -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <!-- Dynamic number of other columns if needed -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><?php echo htmlspecialchars($employee['name']); ?></td>
+                        <td><?php echo htmlspecialchars($employee['email']); ?></td>
+                    </tr>
+                </tbody>
+            </table>
         <?php elseif (isset($housing["address"])): ?>
             <!-- Housing data display logic -->
             <table>
