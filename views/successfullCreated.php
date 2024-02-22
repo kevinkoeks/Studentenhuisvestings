@@ -35,6 +35,29 @@
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+
     </style>
 </head>
 <body>
@@ -106,6 +129,9 @@
     <?php else: ?>
         <p>Unknown entity type.</p>
     <?php endif; ?>
+    </div>
+    <div style="margin-bottom: 20px;">
+        <a href="../public" class="button">Return to Home</a>
     </div>
 </body>
 </html>
