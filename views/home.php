@@ -31,7 +31,7 @@
 </head>
 <body>
     <div class="content">
-        <h1>Welcome to Studentenhuisvesting Home</h1>
+        <h1>Welcome to the Studentenhuisvesting Dashboard</h1>
         <p>Welcome Employee! Let's help these students get some housing!</p>
         <p>Find the best housing options tailored for students.</p> 
         <p>Explore how you can help students with housing, and manage their stay through our platform.</p>
