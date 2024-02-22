@@ -8,23 +8,42 @@ class Employee extends Model {
         parent::__construct(); //Calling the parent constructor to execute (Override)
     }
 
-    public function addEmployee($name, $email, $position) {
-        echo "add employee $name, $email, $position";
-        try {
-            $query = "INSERT INTO employees (name, email, position) VALUES (:name, :email, :position)";
+    public function addEmployee($data) {
+        echo "register employee ";
         
+        try {
+            $name = $data["name"];
+            $email = $data["email"];
+            $position = $data["position"];
+            $password = password_hash($data["password"], PASSWORD_DEFAULT); // Hash the password
+
+            // Before inserting a new employee, check if the email already exists
+            $query = "SELECT * FROM employees WHERE email = :email LIMIT 1";
             $stmt = $this->db->prepare($query);
-            
-            // Bind values
-            $stmt->bindParam(':name', $name);
             $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':position', $position);
-            
-            if ($stmt->execute()) {
-                return true;
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                echo "<p>Email already in use. Please choose another email.</p>";
             } else {
-                return false;
+                $query = "INSERT INTO employees (name, email, position, password) VALUES (:name, :email, :position, :password)";
+            
+                $stmt = $this->db->prepare($query);
+                
+                $stmt->bindParam(':name', $name);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':position', $position);
+                $stmt->bindParam(':password', $password);
+                
+                if ($stmt->execute()) {
+                    $employee = ['name' => $name, 'email' => $email, 'position' => $position];
+                    return $employee;
+                } else {
+                    return false;
+                }
             }
+
+
         } catch (\Throwable $th) {
             echo "Error: " . $th->getMessage();
         }

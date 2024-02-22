@@ -62,6 +62,24 @@ switch ($route) {
         $controller = new HousingController();
         $controller->add();
         break;  
+    case 'register':
+        echo "register employee";
+        require_once __DIR__ . '/../controllers/EmployeeController.php';
+        $controller = new EmployeeController();
+        $employeeData = ["name" => $_POST["name"], "email" => $_POST["email"], 
+                        "position" => $_POST["position"], "password" => $_POST["password"]];
+
+        $controller->add($employeeData);
+        break;     
+    case 'login':
+        echo "login employee";
+        // require_once __DIR__ . '/../controllers/EmployeeController.php';
+        // $controller = new EmployeeController();
+        // $employeeData = ["name" => $_POST["name"], "email" => $_POST["email"], 
+        //                 "position" => $_POST["position"], "password" => $_POST["password"]];
+
+        // $controller->add($employeeData);
+        break;    
     case 'updateEmployee':
         echo "update employee";
         require_once __DIR__ . '/../controllers/EmployeeController.php';
