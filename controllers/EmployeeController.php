@@ -13,4 +13,10 @@ class EmployeeController extends Controller {
         $updateEmployee = $employeeModel->updateEmployee($id, $data);
         $this->loadView("successfullCreated", ["employee" => $updateEmployee]);
     }
+
+    public function add($data) {
+        $employeeModel = $this->loadModel("Employee");
+        $registerEmployee = $employeeModel->addEmployee($data);
+        $this->loadView("successfullCreated", ["employee" => $registerEmployee]);
+    }
 }
