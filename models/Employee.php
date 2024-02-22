@@ -8,6 +8,39 @@ class Employee extends Model {
         parent::__construct(); //Calling the parent constructor to execute (Override)
     }
 
+    public function loginEmployee($data) {
+        // Start a new session
+        session_start();
+
+        try {
+            // Check if the form is submitted
+            $email = $data['email'];
+            $password = $data['password'];
+
+            // Will use employee email (unique) to get employee's info/data
+            $query = "SELECT * FROM employees WHERE email = :email LIMIT 1";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $employee = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Verify password with the hashed password in DB
+            if ($employee && password_verify($password, $employee['password'])) {
+                // Authentication successful - set session variables
+                $_SESSION['employee_id'] = $employee['id'];
+                $_SESSION['employee_name'] = $employee['name'];
+                $_SESSION['employee_email'] = $employee['email'];
+                
+                return $employee;
+            } else {
+                echo "<p>Invalid email or password.</p>";
+                return false;
+            }
+        } catch (\Throwable $th) {
+            echo "Error: " . $th->getMessage();
+        }
+    }
+
     public function addEmployee($data) {
         echo "register employee ";
         
