@@ -19,4 +19,10 @@ class EmployeeController extends Controller {
         $registerEmployee = $employeeModel->addEmployee($data);
         $this->loadView("successfullCreated", ["employee" => $registerEmployee]);
     }
+
+    public function login($data) {
+        $employeeModel = $this->loadModel("Employee");
+        $loginEmployee = $employeeModel->loginEmployee($data);
+        $this->loadView("home", ["employee" => $loginEmployee]);
+    }
 }

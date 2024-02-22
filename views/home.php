@@ -32,7 +32,7 @@
 <body>
     <div class="content">
         <h1>Welcome to the Studentenhuisvesting Dashboard</h1>
-        <p>Welcome Employee! Let's help these students get some housing!</p>
+        <h2>Welcome <?= $_SESSION['employee_name'] ?>! Let's help these students get some housing!</h2>
         <p>Find the best housing options tailored for students.</p> 
         <p>Explore how you can help students with housing, and manage their stay through our platform.</p>
         <!-- Add more sections as needed -->
