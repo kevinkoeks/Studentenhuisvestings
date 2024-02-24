@@ -54,10 +54,8 @@ session_destroy();
 <div class="message-box">
     <h1>You have been logged out</h1>
     <p>To log in again, please click the link below.</p>
-</div>
-<div>
-    <p><?= "Bye" ?></p>
     <a href="../public/loginFirst">Log In</a>
 </div>
+
 </body>
 </html>
