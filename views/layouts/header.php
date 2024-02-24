@@ -53,7 +53,7 @@
     <a href="../views/housing/addHousing.php">Add House</a>
     <a href="../public/listAllHousing">List Houses</a>
     <a href="../public/updateEmployee">My Profile</a>
-    <a href="login.php">Login</a>
+    <a href="../public/logout">Logout</a>
 </div>
 
 </body>

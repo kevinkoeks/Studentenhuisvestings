@@ -7,7 +7,7 @@ class StudentController extends Controller {
      public function index() {
         $studentModel = $this->loadModel("Student");
         $students = $studentModel->getAllStudents(); // Fetch all students
-        $this->loadView('listStudents', ['students' => $students]);
+        $this->loadView('student/listStudents', ['students' => $students]);
     }
 
     //Adding student to database and returning a success report!

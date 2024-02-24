@@ -30,6 +30,7 @@ class Employee extends Model {
                 $_SESSION['employee_id'] = $employee['id'];
                 $_SESSION['employee_name'] = $employee['name'];
                 $_SESSION['employee_email'] = $employee['email'];
+                $_SESSION["employeeLoggedIn"] = true;
                 
                 return $employee;
             } else {

@@ -30,8 +30,14 @@ $route = $routeParts[0] ?: 'loginFirst'; // Default to 'home' if the route is em
 
 switch ($route) {
     case 'loginFirst':
-        // header("Location: __DIR__ . /../../views/employee/login.php");
-        require_once __DIR__ . "/../views/employee/login.php";
+        // Check if user is already logged in
+        if (isset($_SESSION["employeeLoggedIn"]) && $_SESSION["employeeLoggedIn"] === true) {
+            echo "In session<br>";
+            require_once __DIR__ . '/../views/home.php';
+        } else {
+            echo "No session<br>";
+            require_once __DIR__ . "/../views/employee/login.php";
+        }
         break;
     case 'home':
         // Make sure the path to home.php is correct
@@ -78,7 +84,10 @@ switch ($route) {
         $controller = new EmployeeController();
         $employeeData = ["email" => $_POST["email"], "password" => $_POST["password"]];
         $controller->login($employeeData);
-        break;    
+        break;
+    case 'logout':
+        require_once __DIR__ . "/../views/employee/logout.php";
+        break;
     case 'updateEmployee':
         echo "update employee";
         require_once __DIR__ . '/../controllers/EmployeeController.php';

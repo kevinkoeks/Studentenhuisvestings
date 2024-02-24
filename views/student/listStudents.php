@@ -44,5 +44,8 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+    <div style="margin-bottom: 20px;">
+        <a href="../public" class="button">Return to Home</a>
+    </div>
 </body>
 </html>
