@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start the session at the beginning of your script
+
 // Display errors for debugging - you might want to remove or modify this in production
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
@@ -28,12 +30,14 @@ $routePath = trim($routePath, '/');
 $routeParts = explode('/', $routePath);
 $route = $routeParts[0] ?: 'loginFirst'; // Default to 'home' if the route is empty
 
+
 switch ($route) {
     case 'loginFirst':
         // Check if user is already logged in
         if (isset($_SESSION["employeeLoggedIn"]) && $_SESSION["employeeLoggedIn"] === true) {
             echo "In session<br>";
             require_once __DIR__ . '/../views/home.php';
+            // $_SESSION["employeeLoggedIn"] = true;
         } else {
             echo "No session<br>";
             require_once __DIR__ . "/../views/employee/login.php";

@@ -10,7 +10,7 @@ class Employee extends Model {
 
     public function loginEmployee($data) {
         // Start a new session
-        session_start();
+        // session_start();
 
         try {
             // Check if the form is submitted

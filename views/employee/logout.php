@@ -3,6 +3,7 @@ require_once __DIR__ . "/../../config/config.php";
 
 session_start();
 
+$employeeName = $_SESSION["employee_name"];
 // Unset all of the session variables
 $_SESSION = array();
 
@@ -52,7 +53,7 @@ session_destroy();
 <body>
 
 <div class="message-box">
-    <h1>You have been logged out</h1>
+    <h1>Bye <?= $employeeName ?>, you have been logged out</h1>
     <p>To log in again, please click the link below.</p>
     <a href="../public/loginFirst">Log In</a>
 </div>
