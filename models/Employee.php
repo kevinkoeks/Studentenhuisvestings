@@ -27,7 +27,7 @@ class Employee extends Model {
             // Verify password with the hashed password in DB
             if ($employee && password_verify($password, $employee['password'])) {
                 // Authentication successful - set session variables
-                $_SESSION['employee_id'] = $employee['id'];
+                $_SESSION['employeeId'] = $employee['id'];
                 $_SESSION['employee_name'] = $employee['name'];
                 $_SESSION['employee_email'] = $employee['email'];
                 $_SESSION["employeeLoggedIn"] = true;

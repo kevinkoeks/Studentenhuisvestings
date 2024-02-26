@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/../../config/config.php";
 
-session_start();
 
 $employeeName = $_SESSION["employee_name"];
 // Unset all of the session variables

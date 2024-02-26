@@ -96,8 +96,8 @@ switch ($route) {
         echo "update employee";
         require_once __DIR__ . '/../controllers/EmployeeController.php';
         $controller = new EmployeeController();
-        if (!isset($_POST['id'])) {
-            $controller->index(1);
+        if (!isset($_POST["id"])) {
+            $controller->index($_SESSION["employeeId"]);
         } else {
             $id = $_POST["id"];
             $employeeData = ["name" => $_POST["name"], "email" => $_POST["email"], "position" => $_POST["position"]];
