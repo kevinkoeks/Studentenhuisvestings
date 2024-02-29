@@ -1,12 +1,6 @@
 <?php
 session_start(); // Start the session at the beginning of your script
 
-// Display errors for debugging - you might want to remove or modify this in production
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-// Then proceed with your routing logic...
-
 
 require_once __DIR__ . "/../config/config.php";
 require_once __DIR__ . "/../core/Database.php";
